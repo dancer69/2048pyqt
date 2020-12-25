@@ -1,0 +1,286 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui version="4.0">
+ <class>winLooseDlg</class>
+ <widget class="QDialog" name="winLooseDlg">
+  <property name="windowModality">
+   <enum>Qt::ApplicationModal</enum>
+  </property>
+  <property name="geometry">
+   <rect>
+    <x>0</x>
+    <y>0</y>
+    <width>860</width>
+    <height>380</height>
+   </rect>
+  </property>
+  <property name="font">
+   <font>
+    <family>Sans Serif</family>
+   </font>
+  </property>
+  <property name="windowTitle">
+   <string>Dialog</string>
+  </property>
+  <property name="styleSheet">
+   <string notr="true"/>
+  </property>
+  <widget class="QLabel" name="lWinLoose">
+   <property name="geometry">
+    <rect>
+     <x>12</x>
+     <y>36</y>
+     <width>841</width>
+     <height>101</height>
+    </rect>
+   </property>
+   <property name="font">
+    <font>
+     <family>JACKPORT COLLEGE NCV</family>
+     <pointsize>72</pointsize>
+    </font>
+   </property>
+   <property name="styleSheet">
+    <string notr="true">QLabel{
+color: rgb(255, 170, 127)
+}</string>
+   </property>
+   <property name="text">
+    <string>ΚΕΡΔΙΣΑΤΕ ! ! !</string>
+   </property>
+   <property name="alignment">
+    <set>Qt::AlignCenter</set>
+   </property>
+  </widget>
+  <widget class="QLabel" name="lAsk">
+   <property name="geometry">
+    <rect>
+     <x>10</x>
+     <y>130</y>
+     <width>821</width>
+     <height>111</height>
+    </rect>
+   </property>
+   <property name="font">
+    <font>
+     <family>PF Scandal Pro Black</family>
+     <pointsize>48</pointsize>
+     <weight>75</weight>
+     <bold>true</bold>
+    </font>
+   </property>
+   <property name="styleSheet">
+    <string notr="true">QLabel{
+color: rgb(85, 0, 0)
+}</string>
+   </property>
+   <property name="text">
+    <string>Θέλετε να συνεχίσετε;</string>
+   </property>
+   <property name="alignment">
+    <set>Qt::AlignCenter</set>
+   </property>
+  </widget>
+  <widget class="QPushButton" name="bYes">
+   <property name="geometry">
+    <rect>
+     <x>287</x>
+     <y>295</y>
+     <width>121</width>
+     <height>71</height>
+    </rect>
+   </property>
+   <property name="font">
+    <font>
+     <family>JACKPORT COLLEGE NCV</family>
+     <pointsize>36</pointsize>
+    </font>
+   </property>
+   <property name="styleSheet">
+    <string notr="true">QPushButton{
+background: rgb(255, 131, 69);
+border: 6px solid rgb(255, 96, 99);
+border-image:url(:/resources/images/btn.png);
+border-radius: 18px
+}
+
+QPushButton:pressed{
+background: rgb(255, 131, 69);
+border: 6px solid rgb(255, 96, 99);
+border-image:url(:/resources/images/btn_pressed.png);
+border-radius: 18px
+}</string>
+   </property>
+   <property name="text">
+    <string>ΝΑΙ</string>
+   </property>
+   <property name="shortcut">
+    <string>Return</string>
+   </property>
+   <property name="autoDefault">
+    <bool>true</bool>
+   </property>
+  </widget>
+  <widget class="QPushButton" name="bNo">
+   <property name="geometry">
+    <rect>
+     <x>437</x>
+     <y>295</y>
+     <width>121</width>
+     <height>71</height>
+    </rect>
+   </property>
+   <property name="font">
+    <font>
+     <family>JACKPORT COLLEGE NCV</family>
+     <pointsize>36</pointsize>
+    </font>
+   </property>
+   <property name="styleSheet">
+    <string notr="true">QPushButton{
+background: rgb(255, 131, 69);
+border: 6px solid rgb(255, 96, 99);
+border-image:url(:/resources/images/btn.png);
+border-radius: 18px
+}
+
+QPushButton:pressed{
+background: rgb(255, 131, 69);
+border: 6px solid rgb(255, 96, 99);
+border-image:url(:/resources/images/btn_pressed.png);
+border-radius: 18px
+}</string>
+   </property>
+   <property name="text">
+    <string>ΟΧΙ</string>
+   </property>
+   <property name="shortcut">
+    <string>Esc</string>
+   </property>
+  </widget>
+  <widget class="QLabel" name="lbBack">
+   <property name="geometry">
+    <rect>
+     <x>0</x>
+     <y>0</y>
+     <width>860</width>
+     <height>380</height>
+    </rect>
+   </property>
+   <property name="styleSheet">
+    <string notr="true">QLabel{
+background: url(:/resources/images/Background2.png);
+border-radius: 25px
+}</string>
+   </property>
+   <property name="text">
+    <string/>
+   </property>
+  </widget>
+  <widget class="QLabel" name="lWinBack">
+   <property name="geometry">
+    <rect>
+     <x>8</x>
+     <y>17</y>
+     <width>161</width>
+     <height>100</height>
+    </rect>
+   </property>
+   <property name="font">
+    <font>
+     <family>Sans Serif</family>
+     <pointsize>28</pointsize>
+    </font>
+   </property>
+   <property name="styleSheet">
+    <string notr="true">QLabel{
+border-image: url(:/resources/images/winBack.png)
+}</string>
+   </property>
+   <property name="text">
+    <string/>
+   </property>
+   <property name="alignment">
+    <set>Qt::AlignBottom|Qt::AlignHCenter</set>
+   </property>
+  </widget>
+  <widget class="QLabel" name="lWinNumber">
+   <property name="geometry">
+    <rect>
+     <x>42</x>
+     <y>59</y>
+     <width>91</width>
+     <height>50</height>
+    </rect>
+   </property>
+   <property name="font">
+    <font>
+     <family>Sans Serif</family>
+     <pointsize>24</pointsize>
+    </font>
+   </property>
+   <property name="styleSheet">
+    <string notr="true">QLabel{
+color:rgb(132, 255, 16)
+}</string>
+   </property>
+   <property name="text">
+    <string>65536</string>
+   </property>
+   <property name="alignment">
+    <set>Qt::AlignCenter</set>
+   </property>
+  </widget>
+  <widget class="QPushButton" name="bOk">
+   <property name="geometry">
+    <rect>
+     <x>360</x>
+     <y>250</y>
+     <width>121</width>
+     <height>71</height>
+    </rect>
+   </property>
+   <property name="font">
+    <font>
+     <family>JACKPORT COLLEGE NCV</family>
+     <pointsize>36</pointsize>
+    </font>
+   </property>
+   <property name="styleSheet">
+    <string notr="true">QPushButton{
+background: rgb(255, 131, 69);
+border: 6px solid rgb(255, 96, 99);
+border-image:url(:/resources/images/btn.png);
+border-radius: 18px
+}
+
+QPushButton:pressed{
+background: rgb(255, 131, 69);
+border: 6px solid rgb(255, 96, 99);
+border-image:url(:/resources/images/btn_pressed.png);
+border-radius: 18px
+}</string>
+   </property>
+   <property name="text">
+    <string>OK</string>
+   </property>
+   <property name="shortcut">
+    <string>Return</string>
+   </property>
+   <property name="autoDefault">
+    <bool>true</bool>
+   </property>
+  </widget>
+  <zorder>lbBack</zorder>
+  <zorder>lWinLoose</zorder>
+  <zorder>lAsk</zorder>
+  <zorder>bYes</zorder>
+  <zorder>bNo</zorder>
+  <zorder>lWinBack</zorder>
+  <zorder>lWinNumber</zorder>
+  <zorder>bOk</zorder>
+ </widget>
+ <resources>
+  <include location="resources.qrc"/>
+ </resources>
+ <connections/>
+</ui>

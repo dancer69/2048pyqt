@@ -1,0 +1,298 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui version="4.0">
+ <class>HelpDialog</class>
+ <widget class="QDialog" name="HelpDialog">
+  <property name="geometry">
+   <rect>
+    <x>0</x>
+    <y>0</y>
+    <width>950</width>
+    <height>760</height>
+   </rect>
+  </property>
+  <property name="font">
+   <font>
+    <family>Sans Serif</family>
+   </font>
+  </property>
+  <property name="windowTitle">
+   <string>Help</string>
+  </property>
+  <widget class="QLabel" name="lBackground">
+   <property name="geometry">
+    <rect>
+     <x>-24</x>
+     <y>-3</y>
+     <width>1001</width>
+     <height>771</height>
+    </rect>
+   </property>
+   <property name="styleSheet">
+    <string notr="true">QLabel{
+border-image:url(:/resources/images/helpBackground.png)
+}</string>
+   </property>
+   <property name="text">
+    <string/>
+   </property>
+  </widget>
+  <widget class="QLabel" name="Header1">
+   <property name="geometry">
+    <rect>
+     <x>20</x>
+     <y>40</y>
+     <width>521</width>
+     <height>51</height>
+    </rect>
+   </property>
+   <property name="font">
+    <font>
+     <family>Sans Serif</family>
+     <pointsize>36</pointsize>
+    </font>
+   </property>
+   <property name="styleSheet">
+    <string notr="true">QLabel{
+color:rgb(206, 137, 0)
+}</string>
+   </property>
+   <property name="text">
+    <string>Σκοπος Του παιχνιδιου</string>
+   </property>
+  </widget>
+  <widget class="QPushButton" name="bBack">
+   <property name="geometry">
+    <rect>
+     <x>350</x>
+     <y>669</y>
+     <width>221</width>
+     <height>81</height>
+    </rect>
+   </property>
+   <property name="font">
+    <font>
+     <family>JACKPORT COLLEGE NCV</family>
+     <pointsize>36</pointsize>
+    </font>
+   </property>
+   <property name="styleSheet">
+    <string notr="true">QPushButton{
+background: rgb(255, 131, 69);
+border: 6px solid rgb(255, 96, 99);
+border-image:url(:/resources/images/btn.png);
+border-radius: 18px
+}
+
+QPushButton:pressed{
+background: rgb(255, 131, 69);
+border: 6px solid rgb(255, 96, 99);
+border-image:url(:/resources/images/btn_pressed.png);
+border-radius: 18px
+}</string>
+   </property>
+   <property name="text">
+    <string>Επιστροφη</string>
+   </property>
+   <property name="shortcut">
+    <string>Return</string>
+   </property>
+   <property name="autoDefault">
+    <bool>true</bool>
+   </property>
+  </widget>
+  <widget class="Line" name="line">
+   <property name="geometry">
+    <rect>
+     <x>20</x>
+     <y>80</y>
+     <width>481</width>
+     <height>16</height>
+    </rect>
+   </property>
+   <property name="styleSheet">
+    <string notr="true"/>
+   </property>
+   <property name="orientation">
+    <enum>Qt::Horizontal</enum>
+   </property>
+  </widget>
+  <widget class="QTextEdit" name="tePage1">
+   <property name="geometry">
+    <rect>
+     <x>20</x>
+     <y>92</y>
+     <width>901</width>
+     <height>461</height>
+    </rect>
+   </property>
+   <property name="font">
+    <font>
+     <family>Sans Serif</family>
+     <pointsize>22</pointsize>
+    </font>
+   </property>
+   <property name="mouseTracking">
+    <bool>false</bool>
+   </property>
+   <property name="styleSheet">
+    <string notr="true">QTextEdit{
+background: transparent;
+color: rgb(170, 255, 127);
+}</string>
+   </property>
+   <property name="verticalScrollBarPolicy">
+    <enum>Qt::ScrollBarAlwaysOff</enum>
+   </property>
+   <property name="undoRedoEnabled">
+    <bool>false</bool>
+   </property>
+   <property name="readOnly">
+    <bool>true</bool>
+   </property>
+   <property name="html">
+    <string>&lt;!DOCTYPE HTML PUBLIC &quot;-//W3C//DTD HTML 4.0//EN&quot; &quot;http://www.w3.org/TR/REC-html40/strict.dtd&quot;&gt;
+&lt;html&gt;&lt;head&gt;&lt;meta name=&quot;qrichtext&quot; content=&quot;1&quot; /&gt;&lt;style type=&quot;text/css&quot;&gt;
+p, li { white-space: pre-wrap; }
+&lt;/style&gt;&lt;/head&gt;&lt;body style=&quot; font-family:'Sans Serif'; font-size:22pt; font-weight:400; font-style:normal;&quot;&gt;
+&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-family:'Rosemary';&quot;&gt;   Σκοπός του παιχνιδιού είναι, σε ένα πλαίσιο 16 θέσεων να μετακινείς τα πλακίδια με τους αριθμούς δεξιά-αριστερά ή πάνω-κάτω, διπλασιάζοντάς την τιμή τους. Κάθε φορά που ακουμπάνε δύο πλακίδια με τον ίδιο αριθμό, συγχωνεύονται σε ένα, διπλασιάζοντας τον αριθμό του πλακιδίου. Στόχος είναι να φτάσεις να έχεις μέσα σε ένα πλακίδιο τον αριθμό &lt;/span&gt;&lt;span style=&quot; font-family:'Rosemary'; font-weight:600; color:#ffaa7f;&quot;&gt;2048&lt;/span&gt;&lt;span style=&quot; font-family:'Rosemary';&quot;&gt;. Στη συγκεκρίμενη εκδοχή είναι δυνατή η συνέχιση του παιχνιδιού με στόχους τους αριθμούς &lt;/span&gt;&lt;span style=&quot; font-family:'Rosemary'; font-weight:600; color:#ffaa7f;&quot;&gt;8192&lt;/span&gt;&lt;span style=&quot; font-family:'Rosemary';&quot;&gt;, &lt;/span&gt;&lt;span style=&quot; font-family:'Rosemary'; font-weight:600; color:#ffaa7f;&quot;&gt;16384&lt;/span&gt;&lt;span style=&quot; font-family:'Rosemary';&quot;&gt;, &lt;/span&gt;&lt;span style=&quot; font-family:'Rosemary'; font-weight:600; color:#ffaa7f;&quot;&gt;32768&lt;/span&gt;&lt;span style=&quot; font-family:'Rosemary';&quot;&gt; και &lt;/span&gt;&lt;span style=&quot; font-family:'Rosemary'; font-weight:600; color:#ffaa7f;&quot;&gt;65536&lt;/span&gt;&lt;span style=&quot; font-family:'Rosemary';&quot;&gt;. &lt;/span&gt;&lt;/p&gt;
+&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-family:'Rosemary';&quot;&gt;   Κάθε φορά βέβαια που συγχωνεύονται δύο πλακίδια, εμφανίζεται ένα νέο με τον αριθμό &lt;/span&gt;&lt;span style=&quot; font-family:'Rosemary'; font-weight:600; color:#ffaa7f;&quot;&gt;2&lt;/span&gt;&lt;span style=&quot; font-family:'Rosemary';&quot;&gt; κατά μεγαλύτερο ποσοστό ή τον αριθμό &lt;/span&gt;&lt;span style=&quot; font-family:'Rosemary'; font-weight:600; color:#ffaa7f;&quot;&gt;4&lt;/span&gt;&lt;span style=&quot; font-family:'Rosemary';&quot;&gt; πιο σπάνια. Όταν γεμίσει το πλαίσιο και δεν υπάρχει κάποιο κενό πλακίδιο το παιχνίδι χάνεται.&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+   </property>
+   <property name="textInteractionFlags">
+    <set>Qt::NoTextInteraction</set>
+   </property>
+  </widget>
+  <widget class="QPushButton" name="bBwd">
+   <property name="geometry">
+    <rect>
+     <x>243</x>
+     <y>589</y>
+     <width>110</width>
+     <height>80</height>
+    </rect>
+   </property>
+   <property name="font">
+    <font>
+     <family>JACKPORT COLLEGE NCV</family>
+     <pointsize>36</pointsize>
+    </font>
+   </property>
+   <property name="styleSheet">
+    <string notr="true">QPushButton{
+border-image:url(:/resources/images/bwd.png)
+}
+
+QPushButton:pressed{
+border-image:url(:/resources/images/bwd_pressed.png)
+}</string>
+   </property>
+   <property name="text">
+    <string/>
+   </property>
+   <property name="shortcut">
+    <string>Return</string>
+   </property>
+   <property name="autoDefault">
+    <bool>true</bool>
+   </property>
+  </widget>
+  <widget class="QPushButton" name="bFwd">
+   <property name="geometry">
+    <rect>
+     <x>570</x>
+     <y>587</y>
+     <width>110</width>
+     <height>80</height>
+    </rect>
+   </property>
+   <property name="font">
+    <font>
+     <family>JACKPORT COLLEGE NCV</family>
+     <pointsize>36</pointsize>
+    </font>
+   </property>
+   <property name="styleSheet">
+    <string notr="true">QPushButton{
+border-image:url(:/resources/images/fwd.png)
+}
+
+QPushButton:pressed{
+border-image:url(:/resources/images/fwd_pressed.png)
+}</string>
+   </property>
+   <property name="text">
+    <string/>
+   </property>
+   <property name="shortcut">
+    <string>Return</string>
+   </property>
+   <property name="autoDefault">
+    <bool>true</bool>
+   </property>
+  </widget>
+  <widget class="QTextEdit" name="tePage2">
+   <property name="geometry">
+    <rect>
+     <x>20</x>
+     <y>90</y>
+     <width>901</width>
+     <height>491</height>
+    </rect>
+   </property>
+   <property name="font">
+    <font>
+     <family>Sans Serif</family>
+     <pointsize>22</pointsize>
+    </font>
+   </property>
+   <property name="mouseTracking">
+    <bool>false</bool>
+   </property>
+   <property name="styleSheet">
+    <string notr="true">QTextEdit{
+background: transparent;
+color: rgb(170, 255, 127);
+}</string>
+   </property>
+   <property name="verticalScrollBarPolicy">
+    <enum>Qt::ScrollBarAlwaysOff</enum>
+   </property>
+   <property name="undoRedoEnabled">
+    <bool>false</bool>
+   </property>
+   <property name="readOnly">
+    <bool>true</bool>
+   </property>
+   <property name="html">
+    <string>&lt;!DOCTYPE HTML PUBLIC &quot;-//W3C//DTD HTML 4.0//EN&quot; &quot;http://www.w3.org/TR/REC-html40/strict.dtd&quot;&gt;
+&lt;html&gt;&lt;head&gt;&lt;meta name=&quot;qrichtext&quot; content=&quot;1&quot; /&gt;&lt;style type=&quot;text/css&quot;&gt;
+p, li { white-space: pre-wrap; }
+&lt;/style&gt;&lt;/head&gt;&lt;body style=&quot; font-family:'Sans Serif'; font-size:22pt; font-weight:400; font-style:normal;&quot;&gt;
+&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-family:'Rosemary';&quot;&gt;   Ο χειρισμός γίνεται με το πληκτρολόγιο ή το ποντίκι. Υπάρχουν 3 επιλογές για την μετακίνηση των πλακιδίων πάνω/κάτω, δεξιά/αριστερά. Αυτές είναι: &lt;/span&gt;&lt;/p&gt;
+&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-family:'Rosemary'; font-weight:600;&quot;&gt;1. &lt;/span&gt;&lt;span style=&quot; font-family:'Rosemary';&quot;&gt;Τα πλήκτρα με τα &lt;/span&gt;&lt;span style=&quot; font-family:'Rosemary'; font-weight:600; color:#ffaa7f;&quot;&gt;βέλη&lt;/span&gt;&lt;span style=&quot; font-family:'Rosemary';&quot;&gt;.&lt;/span&gt;&lt;/p&gt;
+&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-family:'Rosemary'; font-weight:600;&quot;&gt;2. &lt;/span&gt;&lt;span style=&quot; font-family:'Rosemary';&quot;&gt;Τα πλήκτρα &lt;/span&gt;&lt;span style=&quot; font-family:'Rosemary'; font-weight:600; color:#ffaa7f;&quot;&gt;w, s, a, d&lt;/span&gt;&lt;/p&gt;
+&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-family:'Rosemary'; font-weight:600;&quot;&gt;3. &lt;/span&gt;&lt;span style=&quot; font-family:'Rosemary';&quot;&gt;Τα πλήκτρα &lt;/span&gt;&lt;span style=&quot; font-family:'Rosemary'; font-weight:600; color:#ffaa7f;&quot;&gt;i, j, k, l&lt;/span&gt;&lt;/p&gt;
+&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-family:'Rosemary'; font-weight:600;&quot;&gt;-&lt;/span&gt;&lt;span style=&quot; font-family:'Rosemary';&quot;&gt;   Με το &lt;/span&gt;&lt;span style=&quot; font-family:'Rosemary'; font-weight:600; color:#ffaa7f;&quot;&gt;ποντίκι&lt;/span&gt;&lt;span style=&quot; font-family:'Rosemary';&quot;&gt;: έχοντας πατημένο το αριστερό κουμπί, σύρετε πάνω/κάτω/δεξιά/αριστερά.&lt;/span&gt;&lt;/p&gt;
+&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-family:'Rosemary';&quot;&gt; Υπάρχει η δυνατότητα &lt;/span&gt;&lt;span style=&quot; font-family:'Rosemary'; font-style:italic;&quot;&gt;αναίρεσης των κινήσεων&lt;/span&gt;&lt;span style=&quot; font-family:'Rosemary';&quot;&gt; μέσω των πλήκτρων &lt;/span&gt;&lt;span style=&quot; font-family:'Rosemary'; font-weight:600; color:#ffaa7f;&quot;&gt;backspace &amp;amp; z&lt;/span&gt;&lt;span style=&quot; font-family:'Rosemary';&quot;&gt;.&lt;/span&gt;&lt;/p&gt;
+&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-family:'Rosemary';&quot;&gt; Η συνέχιση του παιχνιδιού μπορεί να γίνει και από το πληκτρολόγιο με το πλήκτρο &lt;/span&gt;&lt;span style=&quot; font-family:'Rosemary'; font-weight:600; color:#ffaa7f;&quot;&gt;enter&lt;/span&gt;&lt;span style=&quot; font-family:'Rosemary';&quot;&gt;,&lt;/span&gt;&lt;/p&gt;
+&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-family:'Rosemary';&quot;&gt; ενώ η ακύρωση με το πλήκτρο &lt;/span&gt;&lt;span style=&quot; font-family:'Rosemary'; font-weight:600; color:#ffaa7f;&quot;&gt;escape&lt;/span&gt;&lt;span style=&quot; font-family:'Rosemary'; font-weight:600;&quot;&gt; &lt;/span&gt;&lt;span style=&quot; font-family:'Rosemary'; font-style:italic;&quot;&gt;(αφορά τους διαλόγους συνέχισης-ακύρωσης)&lt;/span&gt;&lt;span style=&quot; font-family:'Rosemary';&quot;&gt;.&lt;/span&gt;&lt;/p&gt;
+&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-family:'Rosemary'; font-style:italic; vertical-align:sub;&quot;&gt;Σημειωση:&lt;/span&gt;&lt;/p&gt;
+&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-family:'Rosemary'; font-style:italic; vertical-align:sub;&quot;&gt;Για την μετακίνηση της οθόνης του παιχνιδιού κρατήστε πατημένο το δεξί κουμπί του ποντικιού και σύρετε.&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+   </property>
+   <property name="textInteractionFlags">
+    <set>Qt::NoTextInteraction</set>
+   </property>
+  </widget>
+  <zorder>lBackground</zorder>
+  <zorder>Header1</zorder>
+  <zorder>bBack</zorder>
+  <zorder>line</zorder>
+  <zorder>bBwd</zorder>
+  <zorder>bFwd</zorder>
+  <zorder>tePage1</zorder>
+  <zorder>tePage2</zorder>
+ </widget>
+ <resources>
+  <include location="resources.qrc"/>
+ </resources>
+ <connections/>
+</ui>
