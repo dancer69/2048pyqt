@@ -94,7 +94,7 @@ class Ui_MainWindow(object):
         self.lTopUi.setText("")
         self.lTopUi.setObjectName("lTopUi")
         self.sndslider = QtWidgets.QSlider(self.centralwidget)
-        self.sndslider.setGeometry(QtCore.QRect(97, 575, 201, 20))
+        self.sndslider.setGeometry(QtCore.QRect(97, 575, 201, 16))
         self.sndslider.setFocusPolicy(QtCore.Qt.NoFocus)
         self.sndslider.setStyleSheet("QSlider::handle:horizontal {\n"
 "    background: qlineargradient(spread:pad, x1:0, y1:0, x2:1, y2:0, stop:0 rgba(255, 178, 102, 255), stop:0.55 rgba(235, 148, 61, 255), stop:0.98 rgba(0, 0, 0, 255), stop:1 rgba(0, 0, 0, 0));\n"
@@ -114,7 +114,7 @@ class Ui_MainWindow(object):
         self.sndslider.setOrientation(QtCore.Qt.Horizontal)
         self.sndslider.setObjectName("sndslider")
         self.musslider = QtWidgets.QSlider(self.centralwidget)
-        self.musslider.setGeometry(QtCore.QRect(97, 495, 201, 51))
+        self.musslider.setGeometry(QtCore.QRect(97, 510, 201, 16))
         self.musslider.setFocusPolicy(QtCore.Qt.NoFocus)
         self.musslider.setStyleSheet("QSlider::handle:horizontal {\n"
 "    background: qlineargradient(spread:pad, x1:0, y1:0, x2:1, y2:0, stop:0 rgba(255, 178, 102, 255), stop:0.55 rgba(235, 148, 61, 255), stop:0.98 rgba(0, 0, 0, 255), stop:1 rgba(0, 0, 0, 0));\n"

@@ -216,7 +216,7 @@ border-image: url(:/resources/images/TopUi.png)
       <x>97</x>
       <y>575</y>
       <width>201</width>
-      <height>20</height>
+      <height>16</height>
      </rect>
     </property>
     <property name="focusPolicy">
@@ -247,9 +247,9 @@ QSlider::sub-page:horizontal {
     <property name="geometry">
      <rect>
       <x>97</x>
-      <y>495</y>
+      <y>510</y>
       <width>201</width>
-      <height>51</height>
+      <height>16</height>
      </rect>
     </property>
     <property name="focusPolicy">

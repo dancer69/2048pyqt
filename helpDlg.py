@@ -24,6 +24,8 @@ class HelpDialog(QDialog, Ui_HelpDialog):
         self.Header1.setFont(QFont("JACKPORT COLLEGE NCV", 42))
         self.tePage1.setFont(QFont("Rosemary", 32))
         self.tePage2.setFont(QFont("Rosemary", 32))
+        self.tePage1.setAttribute(Qt.WA_StyledBackground, (True))
+        self.tePage2.setAttribute(Qt.WA_StyledBackground, (True))
         self.tePage2.hide()
         self.bBack.setFont(QFont("JACKPORT COLLEGE NCV", 34))
         self.bBack.clicked.connect(self.backClicked)
