@@ -1,8 +1,8 @@
 import os
 import random
 import sys
-from PyQt5 import QtWidgets, QtCore
-from PyQt5.QtCore import QCoreApplication, pyqtSlot, QSettings, Qt, QPoint, QByteArray, QSize
+from PyQt5 import QtWidgets, QtCore, QtGui
+from PyQt5.QtCore import QCoreApplication, pyqtSlot, QSettings, Qt, QPoint, QByteArray, QSize, QObject
 from PyQt5.QtGui import QFontDatabase, QFont, QMovie, QPixmap, QCursor
 from PyQt5.QtWidgets import QMainWindow, QLabel
 from game2048 import Ui_MainWindow
@@ -16,9 +16,11 @@ import moosegesture
 
 APP_FOLDER = os.path.dirname(os.path.abspath(__file__))
 
-#Δημιουργία τυχαίων νέων πλακιδίων στο πλαίσιο
+
+# Δημιουργία τυχαίων νέων πλακιδίων στο πλαίσιο
 def gen():
     return random.randint(0, c.GRID_LEN - 1)
+
 
 class Game(QMainWindow, Ui_MainWindow):
     # set window on screen center
@@ -45,7 +47,7 @@ class Game(QMainWindow, Ui_MainWindow):
     def animateBackground(self):
         # Load the file into a QMovie
         self.movie = QMovie(APP_FOLDER + "/resources/images/clouds.gif", QByteArray(), self)
-        self.movie.setScaledSize(QSize(1020,900))
+        self.movie.setScaledSize(QSize(1020, 900))
         self.movie.setSpeed(70)
         proxy_style = RoundPixmapStyle(radius=20, style=self.lbBackground.style())
         self.lbBackground.setStyle(proxy_style)
@@ -57,14 +59,14 @@ class Game(QMainWindow, Ui_MainWindow):
         return settings
 
     def __init__(self, parent=None):
-        #Αρχικοποίηση του γραφικού περιβάλλοντος
-        super(Game,self).__init__(parent)
+        # Αρχικοποίηση του γραφικού περιβάλλοντος
+        super(Game, self).__init__(parent)
         print(APP_FOLDER)
         self.setupUi(self)
-
-        #Μεταβλητές
-        self.points=[]
-        self.speed=30
+        c.SCORE=self.settings().value("score", 0, type=int)
+        # Μεταβλητές
+        self.points = []
+        self.speed = 30
         self.movie = None
         self.commands = {c.KEY_UP: logic.up, c.KEY_DOWN: logic.down,
                          c.KEY_LEFT: logic.left, c.KEY_RIGHT: logic.right,
@@ -104,33 +106,33 @@ class Game(QMainWindow, Ui_MainWindow):
         self.matrix = logic.new_game(c.GRID_LEN)
         self.history_matrixs = []
         self.update_grid_cells()
+        self.restoreGame()
 
-        #Αντιστοίχιση ενεργειών κίνησης ποντικιού και κλικ
+        # Αντιστοίχιση ενεργειών κίνησης ποντικιού και κλικ
         self.bHelp.clicked.connect(self.bHelpClicked)
         self.bAnim.clicked.connect(self.animStartStop)
         self.sndslider.valueChanged.connect(self.sndslvalchanged)
         self.musslider.valueChanged.connect(self.musslvalchanged)
         self.frame.installEventFilter(self)
 
-    #Μέθοδος ενεργοποίησης/απενεργοποίησης του κινούμενου bakcground
+    # Μέθοδος ενεργοποίησης/απενεργοποίησης του κινούμενου bakcground
     def animStartStop(self):
-        if self.movie!=None and self.movie.state()==QMovie.Running:
+        if self.movie != None and self.movie.state() == QMovie.Running:
             self.movie.stop()
             self.bAnim.setStyleSheet("QPushButton{\n"
-                                      "border-image: url(:/resources/images/anim_off.png)\n"
-                                        "}")
+                                     "border-image: url(:/resources/images/anim_off.png)\n"
+                                     "}")
         else:
             self.animateBackground()
             self.bAnim.setStyleSheet("QPushButton{\n"
                                      "border-image: url(:/resources/images/anim_on.png)\n"
                                      "}")
 
-
-    #Σχεδίαση του βασικού πλαισίου
+    # Σχεδίαση του βασικού πλαισίου
     def init_grid(self):
         for i in range(c.GRID_LEN):
             for j in range(c.GRID_LEN):
-                self.gridBoard.addWidget(self.setTile("empty"), i,j)
+                self.gridBoard.addWidget(self.setTile("empty"), i, j)
 
     def generate_next(self):
         index = (gen(), gen())
@@ -145,7 +147,7 @@ class Game(QMainWindow, Ui_MainWindow):
                 if new_number == 0:
                     self.replaceTile("empty", i, j)
                 else:
-                    self.replaceTile(new_number, i,j)
+                    self.replaceTile(new_number, i, j)
 
     # Δημιουργία των αριθμητικών πλακιδίων
     def setTile(self, item):
@@ -157,42 +159,42 @@ class Game(QMainWindow, Ui_MainWindow):
         tile.setStyleSheet("QLabel{\n"
                            "border-image: url(:" + str(path) + ")\n"
                                                                "}")
+        tile.setObjectName(str(item))
         return tile
 
-    #Μέθοδος αντικατάστασης πλακιδίου
-    def replaceTile(self,newTile, pX,pY):
+    # Μέθοδος αντικατάστασης πλακιδίου
+    def replaceTile(self, newTile, pX, pY):
         item = self.gridBoard.itemAtPosition(pX, pY)
         self.gridBoard.removeWidget(item.widget())
         self.gridBoard.addWidget(self.setTile(newTile), pX, pY)
 
-    #Ενεργοποίηση των πλήκτρων χειρισμού
+    # Ενεργοποίηση των πλήκτρων χειρισμού
     def keyPressEvent(self, event):
         key = event.key()
         modifiers = QtWidgets.QApplication.keyboardModifiers()
         if modifiers == QtCore.Qt.ControlModifier:
             if key == QtCore.Qt.Key_Home:
-                #print("is up!")
+                # print("is up!")
                 if self.frameGeometry().y() > 0:
                     self.move(self.frameGeometry().x(), self.frameGeometry().y() - self.speed)
             elif key == QtCore.Qt.Key_End:
-                #print("is down!")
+                # print("is down!")
                 if self.frameGeometry().y() > 0:
                     self.move(self.frameGeometry().x(), self.frameGeometry().y() + self.speed)
             elif key == QtCore.Qt.Key_Delete:
-                #print("is left!")
+                # print("is left!")
                 if self.frameGeometry().x() > 0:
                     self.move(self.frameGeometry().x() - self.speed, self.frameGeometry().y())
             elif key == QtCore.Qt.Key_PageDown:
-                #print("is right!")
+                # print("is right!")
                 if self.frameGeometry().x() > 0:
                     self.move(self.frameGeometry().x() + self.speed, self.frameGeometry().y())
-        if key == c.KEY_BACK or key==c.KEY_BACK_ALT:
+        if key == c.KEY_BACK or key == c.KEY_BACK_ALT:
             if len(self.history_matrixs) > 1:
                 self.matrix = self.history_matrixs.pop()
                 self.update_grid_cells()
-                print('back on step total step:', len(self.history_matrixs))
-
-        #Έλεγχος Αν το παιχνίδι τελείωσε και αν έχει κερδηθεί ή χαθεί
+                #print('back on step total step:', len(self.history_matrixs))
+        # Έλεγχος Αν το παιχνίδι τελείωσε και αν έχει κερδηθεί ή χαθεί
         elif key in self.commands:
             self.frame.setCursor(Qt.BlankCursor)
             self.matrix, done = self.commands[key](self.matrix)
@@ -204,6 +206,7 @@ class Game(QMainWindow, Ui_MainWindow):
         self.matrix = logic.add_two(self.matrix)
         # record last move
         self.history_matrixs.append(self.matrix)
+        #print(self.history_matrixs[-1])
         self.update_grid_cells()
         if logic.game_state(self.matrix) == 'win':
             if logic.winNum != 65535:
@@ -223,7 +226,7 @@ class Game(QMainWindow, Ui_MainWindow):
         if int(self.lHiScore.text()) < int(self.lScore.text()):
             self.lHiScore.setText(self.lScore.text())
 
-    #Μέθοδος για χειρσμό με κλικ και σύρσιμο του ποντικιού
+    # Μέθοδος για χειρσμό με κλικ και σύρσιμο του ποντικιού
     def eventFilter(self, source, event):
         if event.type() == QtCore.QEvent.MouseMove:
             self.frame.setCursor(QCursor(self.cursors[1], 35, 35))
@@ -234,13 +237,14 @@ class Game(QMainWindow, Ui_MainWindow):
                     for i in range(len(self.points)):
                         self.points[i] = (self.points[i][0] - startx, self.points[i][1] - starty)
                 self.points.append((event.localPos().x(), event.localPos().y()))
-                #print(self.points)
+                # print(self.points)
         if event.type() == QtCore.QEvent.MouseButtonRelease and event.button() == QtCore.Qt.LeftButton:
-            #print("Released!")
+            # print("Released!")
             self.mouseDown = False
             strokes = moosegesture.getGesture(self.points)
-            strokeText=str(strokes[-1])
-            #print(strokeText)
+            if len(strokes)>0:
+                strokeText = str(strokes[-1])
+            # print(strokeText)
             if strokeText == "R":
                 self.matrix, done = logic.right(self.matrix)
                 if done:
@@ -263,7 +267,7 @@ class Game(QMainWindow, Ui_MainWindow):
 
         return self.frame.eventFilter(source, event)
 
-    #Μέθοδος για την αναπαραγωγή των ήχων
+    # Μέθοδος για την αναπαραγωγή των ήχων
     def playSound(self, sound):
         pygame.mixer.pre_init(frequency=44100, size=-16, channels=3, buffer=512)
         pygame.mixer.init()
@@ -274,22 +278,22 @@ class Game(QMainWindow, Ui_MainWindow):
         effect.set_volume(vol / 100)
         pygame.mixer.find_channel().play(effect)
 
-    #Έλεγχος για αλλαγές στο εικονίδιο ήχου
+    # Έλεγχος για αλλαγές στο εικονίδιο ήχου
     def sndslvalchanged(self):
         self.sndIcon()
 
-    #Αλλαγή του εικονιδίου ήχου
+    # Αλλαγή του εικονιδίου ήχου
     def sndIcon(self):
-        if self.sndslider.value()==0:
+        if self.sndslider.value() == 0:
             self.lSound.setStyleSheet("QLabel{\n"
                                       "border-image: url(:/resources/images/sound_off.png)\n"
-                                        "}")
+                                      "}")
         else:
             self.lSound.setStyleSheet("QLabel{\n"
-             "border-image: url(:/resources/images/sound_on.png)\n"
-             "}")
+                                      "border-image: url(:/resources/images/sound_on.png)\n"
+                                      "}")
 
-    #Μέθοδος για την αnaπαραγωγή μουσικής
+    # Μέθοδος για την αnaπαραγωγή μουσικής
     def playMusic(self):
         pygame.mixer.init(frequency=44100, size=-16, channels=1, buffer=512)
         pygame.mixer.music.load(os.path.join(APP_FOLDER, "resources/sounds/backmusic.ogg"))
@@ -307,14 +311,28 @@ class Game(QMainWindow, Ui_MainWindow):
         self.musIcon()
 
     def musIcon(self):
-        if self.musslider.value()==0:
+        if self.musslider.value() == 0:
             self.lMusic.setStyleSheet("QLabel{\n"
                                       "border-image: url(:/resources/images/music_off.png)\n"
-                                        "}")
+                                      "}")
         else:
             self.lMusic.setStyleSheet("QLabel{\n"
-             "border-image: url(:/resources/images/music_on.png)\n"
-             "}")
+                                      "border-image: url(:/resources/images/music_on.png)\n"
+                                      "}")
+
+    def chkGrid(self):
+        if len(self.history_matrixs) != 0:
+            lst = self.history_matrixs[-1]
+        else:
+            lst=self.settings().value("gameState")
+        nums=[]
+        for i in range(len(lst)):
+            for j in range(len(lst[0])):
+                if lst[i][j]!=0:
+                    nums.append(lst[i][j])
+        print(nums)
+        return nums
+
 
     def bHelpClicked(self):
         helpDlg.HelpDialog(self).exec()
@@ -323,17 +341,18 @@ class Game(QMainWindow, Ui_MainWindow):
     def on_bPlay_clicked(self):
         self.gridBoard.blockSignals(False)
         self.init_grid()
-        c.SCORE=0
+        c.SCORE = 0
         self.lScore.setText(str(c.SCORE))
         self.matrix = logic.new_game(c.GRID_LEN)
         self.history_matrixs = []
         self.update_grid_cells()
 
-
     pyqtSlot()
     def on_bExit_clicked(self):
         self.saveStates()
         self.movie.jumpToFrame(100)
+        if len(self.chkGrid())>2:
+            winLooseDlg.WinLooseDialog(self).dialogTypes("SAVEGAME")
         sys.exit()
 
     # αποθήκευση τιμών της εφαρμογής
@@ -355,14 +374,25 @@ class Game(QMainWindow, Ui_MainWindow):
         if not self.settings().value("windowState") == None:
             self.restoreState(self.settings().value("windowState"))
 
+    def saveGame(self):
+        if len(self.history_matrixs) != 0:
+            self.settings().setValue("gameState", self.history_matrixs[-1])
+        self.settings().setValue("score", self.lScore.text())
+
+    def restoreGame(self):
+        self.matrix = self.settings().value("gameState", logic.new_game(c.GRID_LEN))
+        self.update_grid_cells()
+        self.lScore.setText(self.settings().value("score", "0"))
+
     def closeEvent(self, e):
         self.saveStates()
+
 
 def run():
     app = QtWidgets.QApplication(sys.argv)
     app.setQuitOnLastWindowClosed(True)
     QCoreApplication.setOrganizationName("d69soft")
     QCoreApplication.setApplicationName("2048pyqt")
-    ui=Game()
+    ui = Game()
     ui.show()
     return app.exec_()

@@ -1,8 +1,7 @@
 from PyQt5 import QtCore
-from PyQt5.QtCore import Qt
 
 GRID_LEN = 4
-SCORE=0
+SCORE = 0
 HISCORE=0
 
 CELL_IMAGE_DICT={"empty": "/resources/images/tileBack.png", 2: "/resources/images/2.png",4: "/resources/images/4.png",8: "/resources/images/8.png", 16: "/resources/images/16.png",

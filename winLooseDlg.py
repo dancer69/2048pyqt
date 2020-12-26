@@ -5,6 +5,7 @@ from PyQt5.QtCore import Qt
 from PyQt5.QtGui import QFontDatabase, QFont, QPixmap, QCursor
 from PyQt5.QtWidgets import QDialog
 import logic
+import constants as c
 
 APP_FOLDER = os.path.dirname(os.path.abspath(__file__))
 winLooseDlg_ui=APP_FOLDER + "/winLooseDlg.ui"
@@ -56,6 +57,13 @@ class WinLooseDialog(QDialog, Ui_winLooseDlg):
             self.bOk.show()
             self.exec()
 
+        elif dlgtype == "SAVEGAME":
+            self.lWinLoose.setText("ΑΠΟΘΗΚΕΥΣΗ")
+            self.lAsk.setText("Θέλετε να γίνει αποθήκευση του τρέχοντος παιχνιδιού;")
+            self.lWinNumber.hide()
+            self.lWinBack.hide()
+            self.exec()
+
         elif dlgtype == "HIDE":
             self.close()
 
@@ -71,12 +79,19 @@ class WinLooseDialog(QDialog, Ui_winLooseDlg):
         elif self.lWinLoose.text()== "ΧΑΣΑΤΕ :)":
             self.parent.on_bPlay_clicked()
             self.dialogTypes("HIDE")
+        elif self.lWinLoose.text() == "ΑΠΟΘΗΚΕΥΣΗ":
+            self.parent.saveGame()
+            self.dialogTypes("HIDE")
 
     def bNoClicked(self):
         if self.lWinLoose.text() == "ΚΕΡΔΙΣΑΤΕ ! ! !":
             logic.winNum = self.defVal
             print(self.defVal)
             self.parent.on_bPlay_clicked()
+            self.dialogTypes("HIDE")
+        elif self.lWinLoose.text() == "ΑΠΟΘΗΚΕΥΣΗ":
+            self.parent.settings().setValue("gameState", logic.new_game(c.GRID_LEN))
+            self.parent.settings().setValue("score", "0")
             self.dialogTypes("HIDE")
         else:
             self.dialogTypes("HIDE")

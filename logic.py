@@ -25,7 +25,6 @@ winNum=2048
 #μέθοδος για την τρέχουσα κατάσταση του παιχνιδιού
 def game_state(mat):
     # έλεγχος αν το παιχίδι κερδήθηκε
-
     for i in range(len(mat)):
         for j in range(len(mat[0])):
             if mat[i][j] == winNum:
@@ -38,7 +37,6 @@ def game_state(mat):
     # έλεγχος αν κάποια κελιά που αγγίζονται μεταξύ τους
     for i in range(len(mat)-1):
         # μείωση εκ προθέσεως για να ελεγχθεί η γραμμή στα δεξιά και κάτω
-        # more elegant to use exceptions but most likely this will be their solution
         for j in range(len(mat[0])-1):
             if mat[i][j] == mat[i+1][j] or mat[i][j+1] == mat[i][j]:
                 return 'not over'
