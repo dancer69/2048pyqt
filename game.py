@@ -246,23 +246,23 @@ class Game(QMainWindow, Ui_MainWindow):
             strokes = moosegesture.getGesture(self.points)
             if len(strokes)>0:
                 strokeText = str(strokes[-1])
-            # print(strokeText)
-            if strokeText == "R":
-                self.matrix, done = logic.right(self.matrix)
-                if done:
-                    self.stateOfGame()
-            elif strokeText == "L":
-                self.matrix, done = logic.left(self.matrix)
-                if done:
-                    self.stateOfGame()
-            elif strokeText == "U":
-                self.matrix, done = logic.up(self.matrix)
-                if done:
-                    self.stateOfGame()
-            elif strokeText == "D":
-                self.matrix, done = logic.down(self.matrix)
-                if done:
-                    self.stateOfGame()
+                # print(strokeText)
+                if strokeText == "R":
+                    self.matrix, done = logic.right(self.matrix)
+                    if done:
+                        self.stateOfGame()
+                elif strokeText == "L":
+                    self.matrix, done = logic.left(self.matrix)
+                    if done:
+                        self.stateOfGame()
+                elif strokeText == "U":
+                    self.matrix, done = logic.up(self.matrix)
+                    if done:
+                        self.stateOfGame()
+                elif strokeText == "D":
+                    self.matrix, done = logic.down(self.matrix)
+                    if done:
+                        self.stateOfGame()
             strokes.clear()
         else:
             return True
