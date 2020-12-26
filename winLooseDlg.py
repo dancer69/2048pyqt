@@ -19,7 +19,6 @@ class WinLooseDialog(QDialog, Ui_winLooseDlg):
         self.setupUi(self)
         self.setAttribute(Qt.WA_TranslucentBackground, True)
         self.bOk.hide()
-
         self.parent = parent
         self.fontDatabase = QFontDatabase()
         self.fontDatabase.addApplicationFont(APP_FOLDER + "/resources/fonts/JackportCollegeNcv-1MZe.ttf")

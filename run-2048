@@ -1,0 +1,2 @@
+#!/bin/bash
+python3 pyqt2048.py

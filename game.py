@@ -333,7 +333,6 @@ class Game(QMainWindow, Ui_MainWindow):
         print(nums)
         return nums
 
-
     def bHelpClicked(self):
         helpDlg.HelpDialog(self).exec()
 
