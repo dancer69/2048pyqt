@@ -1,6 +1,8 @@
 import os
 import random
 import sys
+
+import numpy as np
 from PyQt5 import QtWidgets, QtCore, QtGui
 from PyQt5.QtCore import QCoreApplication, pyqtSlot, QSettings, Qt, QPoint, QByteArray, QSize, QObject
 from PyQt5.QtGui import QFontDatabase, QFont, QMovie, QPixmap, QCursor
@@ -380,6 +382,10 @@ class Game(QMainWindow, Ui_MainWindow):
 
     def restoreGame(self):
         self.matrix = self.settings().value("gameState", logic.new_game(c.GRID_LEN))
+        maxNum=np.max(self.matrix)
+        if logic.winNum< (maxNum):
+            logic.winNum= maxNum*2
+        print(logic.winNum)
         self.update_grid_cells()
         self.lScore.setText(self.settings().value("score", "0"))
 
